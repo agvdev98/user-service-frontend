@@ -15,4 +15,11 @@ export class AuthService {
   register(user: UserRequestDTO): Observable<UserResponseDTO> {
     return this.http.post<UserResponseDTO>(`${this.apiUrl}/register`, user);
   }
+
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, {
+      email,
+      password
+    });
+  }
 }

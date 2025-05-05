@@ -1,1 +1,58 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card-panel z-depth-4 login-card">
+        <h4 class="center-align deep-purple-text text-darken-3">Login</h4>
+
+        <!-- Email Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">email</i>
+          <input id="email" type="email" formControlName="email" class="validate"/>
+          <label for="email">Email</label>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')"
+          >
+    Email is required.
+          </span>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')"
+          >
+    Please enter a valid email address.
+        </span>
+        </div>
+
+        <!-- Password Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">lock</i>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="validate"
+          />
+          <label for="password">Password</label>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')"
+          >
+    Password is required.
+          </span>
+
+        <!-- Submit Button -->
+        <div class="center-align">
+          <button type="submit" class="btn waves-effect waves-light login-btn" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </div>
+
+
+        <!-- Extra Actions -->
+        <div class="center-align extra-actions">
+
+          <a  [routerLink]="['/auth/register']" class="deep-purple-text text-darken-3">Create account</a>
+        </div>
