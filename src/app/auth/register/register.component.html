@@ -1,1 +1,86 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card-panel z-depth-4 login-card">
+        <h4 class="center-align deep-purple-text text-darken-3">Register</h4>
+
+        <!-- Name Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">account_circle</i>
+          <input id="name" type="text" formControlName="name" class="validate">
+          <label for="name">Name</label>
+          <span *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')"
+                class="helper-text red-text">Name is required</span>
+          <span *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.hasError('maxlength')"
+                class="helper-text red-text"> Name must not exceed 100 characters.</span>
+        </div>
+
+        <!-- Email Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">email</i>
+          <input id="email" type="email" formControlName="email" class="validate"/>
+          <label for="email">Email</label>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')"
+          >
+    Email is required.
+  </span>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')"
+          >
+    Please enter a valid email address.
+  </span>
+        </div>
+
+        <!-- Password Field -->
+        <div class="input-field">
+          <i class="material-icons prefix deep-purple-text text-darken-2">lock</i>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="validate"
+          />
+          <label for="password">Password</label>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')"
+          >
+    Password is required.
+  </span>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')"
+          >
+    Password must be at least 8 characters.
+  </span>
+
+          <span
+            class="helper-text red-text"
+            *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('pattern')"
+          >
+    Must include uppercase, lowercase, number, and special character.
+  </span>
+        </div>
+
+        <!-- Submit -->
+        <div class="center-align">
+          <button class="btn deep-purple darken-1" type="submit" [disabled]="registerForm.invalid">
+            Register
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
