@@ -9,8 +9,9 @@
           <i class="material-icons prefix deep-purple-text text-darken-2">account_circle</i>
           <input id="name" type="text" formControlName="name" class="validate">
           <label for="name">Name</label>
-          <span *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')"
-                class="helper-text red-text">Name is required</span>
+          <span
+            *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')"
+            class="helper-text red-text">Name is required</span>
           <span *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.hasError('maxlength')"
                 class="helper-text red-text"> Name must not exceed 100 characters.</span>
         </div>
@@ -26,14 +27,14 @@
             *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')"
           >
     Email is required.
-  </span>
+          </span>
 
           <span
             class="helper-text red-text"
             *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')"
           >
     Please enter a valid email address.
-  </span>
+        </span>
         </div>
 
         <!-- Password Field -->
@@ -52,21 +53,21 @@
             *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')"
           >
     Password is required.
-  </span>
+          </span>
 
           <span
             class="helper-text red-text"
             *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')"
           >
     Password must be at least 8 characters.
-  </span>
+          </span>
 
           <span
             class="helper-text red-text"
             *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('pattern')"
           >
     Must include uppercase, lowercase, number, and special character.
-  </span>
+          </span>
         </div>
 
         <!-- Submit -->
